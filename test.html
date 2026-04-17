@@ -5,115 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistem Validasi Akses Aman</title>
     
+    <script src="https://pl29170547.profitablecpmratenetwork.com/ef/80/88/ef8088ede9001b4b2f79f083bda99adc.js"></script>
+
     <style>
-        :root { 
-            --primary: #00a8ff; 
-            --secondary: #2ecc71; 
-            --secondary-dark: #27ae60; 
-            --dark: #2c3e50; 
-            --bg: #f5f6fa; 
-            --white: #ffffff; 
-            --text-muted: #7f8c8d; 
-        }
-        
-        body { 
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif; 
-            background-color: var(--bg); 
-            margin: 0; 
-            color: var(--dark); 
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* Navbar Profesional */
-        .navbar { 
-            background: var(--white); 
-            padding: 16px 8%; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
-            z-index: 1000; 
-            box-sizing: border-box;
-        }
+        :root { --primary: #00a8ff; --secondary: #2ecc71; --dark: #2c3e50; --bg: #f5f6fa; --white: #ffffff; --text-muted: #7f8c8d; }
+        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; color: var(--dark); -webkit-font-smoothing: antialiased; }
+        .navbar { background: var(--white); padding: 16px 8%; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;}
         .logo { font-size: 22px; font-weight: 800; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--dark); }
-        
-        .status-badge { 
-            font-size: 12px; 
-            font-weight: 600; 
-            background: #eafcf1; 
-            color: #156d35; 
-            padding: 6px 14px; 
-            border-radius: 30px; 
-            border: 1px solid #d4f9e3; 
-            display: flex; 
-            align-items: center; 
-        }
+        .status-badge { font-size: 12px; font-weight: 600; background: #eafcf1; color: #156d35; padding: 6px 14px; border-radius: 30px; border: 1px solid #d4f9e3; display: flex; align-items: center; }
         .status-badge::before { content: '●'; margin-right: 6px; color: var(--secondary); font-size: 8px; }
-
         .wrapper { max-width: 550px; margin: 120px auto 60px; padding: 0 20px; }
-        
-        /* Card Utama */
-        .main-card { 
-            background: var(--white); 
-            border-radius: 20px; 
-            padding: 40px; 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.05); 
-            text-align: center; 
-            border: 1px solid rgba(0,0,0,0.01); 
-        }
-        
-        /* Stepper */
+        .main-card { background: var(--white); border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid rgba(0,0,0,0.01); }
         .stepper { display: none; justify-content: space-between; margin-bottom: 35px; gap: 10px; }
         .step { flex: 1; font-size: 11px; font-weight: 600; color: #b0bec5; position: relative; padding-bottom: 10px; }
         .step.active { color: var(--primary); }
         .step::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #eceff1; border-radius: 4px; }
         .step.active::after { background: var(--primary); }
-
-        /* Icons & Teks */
         .hero-icon { font-size: 64px; margin-bottom: 20px; line-height: 1; }
         h3 { margin: 10px 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
         p.description { color: var(--text-muted); font-size: 15px; margin-bottom: 35px; line-height: 1.6; }
-
-        /* Loader */
-        .loading-circle { 
-            width: 80px; height: 80px; border-radius: 50%; 
-            border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); 
-            margin: 0 auto 20px; display: flex; align-items: center; 
-            justify-content: center; font-size: 26px; font-weight: 800; 
-            color: var(--primary);
-        }
-
-        /* Area Iklan */
-        .ad-box { 
-            margin: 25px 0; padding: 20px; 
-            background: #fffdf5; border: 2px dashed #fdd835; 
-            border-radius: 12px; color: #a0a0a0; font-size: 12px; 
-            min-height: 100px; display: flex; align-items: center; justify-content: center;
-        }
-
-        /* Tombol */
-        .btn { 
-            background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); 
-            color: #fff; border: none; padding: 16px 45px; 
-            font-size: 16px; border-radius: 50px; cursor: pointer; 
-            font-weight: 700; text-decoration: none; display: inline-block; 
-            transition: all 0.3s; box-shadow: 0 8px 15px rgba(0,168,255,0.2); 
-        }
+        .loading-circle { width: 80px; height: 80px; border-radius: 50%; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; color: var(--primary); }
+        .btn { background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 8px 15px rgba(0,168,255,0.2); }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0,168,255,0.3); }
-        
-        #finalBtn { 
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%); 
-            display: none; margin-top: 20px; box-shadow: 0 8px 15px rgba(46,204,113,0.2); 
-        }
-
-        /* Footer */
+        #finalBtn { background: linear-gradient(135deg, var(--secondary) 0%, #27ae60 100%); display: none; margin-top: 20px; }
         .footer { text-align: center; font-size: 11px; color: #b0bec5; margin-top: 50px; line-height: 1.6; }
-
-        /* Utilitas Sembunyi */
         #loader-section, #file-details-section { display: none; }
     </style>
 </head>
@@ -126,7 +42,6 @@
 
 <div class="wrapper">
     <div class="main-card">
-        
         <div class="stepper" id="mainStepper">
             <div class="step active">1. Scanning</div>
             <div class="step" id="s2">2. Selesai</div>
@@ -136,21 +51,12 @@
             <div class="hero-icon">🔒</div>
             <h3>Portal Akses Aman</h3>
             <p class="description">Untuk menjamin keamanan pertukaran data, Anda akan melewati pemindaian jaringan sebelum akses unduhan diberikan.</p>
-            
-            <div class="ad-box">
-                ADVERTISEMENT
-            </div>
-
             <button id="startBtn" class="btn">Lanjutkan Ke Validasi</button>
         </div>
 
         <div id="loader-section">
             <div class="loading-circle" id="timer">20</div>
             <p class="description">Memverifikasi koneksi dan menyiapkan jalur unduhan aman, mohon tunggu sebentar...</p>
-            
-            <div class="ad-box">
-                ADVERTISEMENT
-            </div>
         </div>
 
         <div id="file-details-section">
@@ -159,7 +65,7 @@
             <p class="description" style="color: var(--secondary); font-weight: 600;">Akses Anda telah divalidasi dan link unduhan Anda kini siap digunakan.</p>
         </div>
 
-        <a href="https://www.mediafire.com/file/GANTI_DENGAN_LINK_MEDIAFIRE_ANDA" target="_blank" id="finalBtn" class="btn">Ambil File Sekarang</a>
+        <a href="#" id="finalBtn" class="btn">Ambil File Sekarang</a>
     </div>
 
     <div class="footer">
@@ -178,8 +84,11 @@
     const mainStepper = document.getElementById('mainStepper');
     const s2 = document.getElementById('s2');
 
+    // KONFIGURASI LINK
+    const smartlinkAd = "https://www.profitablecpmratenetwork.com/xisznhdm?key=06f3a9cc0d3b169efc1af2009246d769";
+    const mediafireLink = "ISI_DENGAN_LINK_MEDIAFIRE_ANDA"; // <--- GANTI INI
+
     startBtn.addEventListener('click', function() {
-        // Otomatis memicu Popunder jika kode Adsterra sudah dipasang di head
         welcomeSection.style.display = 'none';
         loaderSection.style.display = 'block';
         mainStepper.style.display = 'flex';
@@ -199,15 +108,19 @@
         }, 1000);
     });
 
-    // Deteksi Adblocker Sederhana
-    window.onload = function() {
+    // PROSES DOUBLE CLICK CUAN
+    finalBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Buka Smartlink Iklan di Tab Baru
+        window.open(smartlinkAd, '_blank');
+        // Arahkan Tab Sekarang ke Mediafire setelah jeda kecil
         setTimeout(() => {
-            if (document.querySelector('.ad-box').offsetHeight < 20) {
-                alert("PENTING: Kami mendeteksi pemblokir iklan aktif. Mohon matikan agar proses validasi tidak terganggu.");
-            }
-        }, 3000);
-    };
+            window.location.href = mediafireLink;
+        }, 500);
+    });
 </script>
+
+<script src="https://pl29170546.profitablecpmratenetwork.com/31/90/9e/31909e2c4790b086ed9fe5590abcfe13.js"></script>
 
 </body>
 </html>

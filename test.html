@@ -3,75 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Premium File - Safe Link</title>
+    <title>Secure File Download Portal</title>
     
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container-box { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; max-width: 400px; width: 90%; }
-        .btn { background-color: #2ecc71; color: white; border: none; padding: 15px 30px; font-size: 18px; border-radius: 5px; cursor: pointer; transition: 0.3s; text-decoration: none; display: inline-block; margin-top: 20px; }
-        .btn:disabled { background-color: #bdc3c7; cursor: not-allowed; }
-        .timer-text { font-size: 14px; color: #7f8c8d; margin-top: 10px; }
-        /* Teknik Anti-Adblock: Gunakan nama class yang umum (bukan 'ads') */
-        .content-wrapper { margin: 20px 0; min-height: 100px; background: #fafafa; border: 1px dashed #ddd; display: flex; align-items: center; justify-content: center; }
+        :root { --primary: #3498db; --secondary: #2ecc71; --dark: #2c3e50; --light: #f4f7f6; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--light); margin: 0; color: var(--dark); }
+        .navbar { background: white; padding: 15px 5%; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; justify-content: space-between; align-items: center; }
+        .navbar b { color: var(--primary); font-size: 20px; }
+        
+        .main-container { max-width: 800px; margin: 40px auto; padding: 20px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+        
+        .card { background: white; border-radius: 12px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; }
+        .file-info { background: #f8f9fa; border-radius: 8px; padding: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-around; font-size: 14px; }
+        
+        .steps { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 12px; color: #95a5a6; }
+        .step { flex: 1; border-bottom: 3px solid #ddd; padding-bottom: 10px; }
+        .step.active { border-color: var(--primary); color: var(--primary); font-weight: bold; }
+
+        .btn { background: var(--primary); color: white; border: none; padding: 16px 40px; font-size: 16px; border-radius: 30px; cursor: pointer; font-weight: 600; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-start { background: var(--secondary); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        .timer-circle { width: 80px; height: 80px; border-radius: 50%; border: 5px solid var(--primary); display: flex; align-items: center; justify-content: center; margin: 20px auto; font-size: 24px; font-weight: bold; color: var(--primary); }
+        
+        /* Box Iklan agar terlihat seperti part of design */
+        .ad-slot { margin: 20px 0; padding: 10px; background: #fffcf0; border: 1px solid #ffeb3b; border-radius: 8px; min-height: 100px; }
     </style>
 </head>
 <body>
 
-<div class="container-box">
-    <h2>File Siap Diunduh</h2>
-    <p>Klik tombol di bawah untuk memverifikasi dan mendapatkan akses file premium.</p>
+<nav class="navbar">
+    <b>SecureCloud<span>.</span></b>
+    <div style="font-size: 12px;">Status: <span style="color: green;">● Terlindungi</span></div>
+</nav>
 
-    <div class="content-wrapper">
-        <p style="font-size: 12px; color: #999;">IKLAN AKAN MUNCUL DI SINI</p>
-    </div>
-
-    <button id="startBtn" class="btn">Klik untuk Verifikasi</button>
-    
-    <div id="step2" style="display:none;">
-        <p class="timer-text">Mohon tunggu <span id="seconds">20</span> detik...</p>
-        <div class="content-wrapper">
-            <p style="font-size: 12px; color: #999;">IKLAN REFRESH</p>
+<div class="main-container">
+    <div class="card">
+        <div class="steps">
+            <div class="step active" id="s1">1. Verifikasi</div>
+            <div class="step" id="s2">2. Scanning</div>
+            <div class="step" id="s3">3. Download</div>
         </div>
+
+        <h3>File Siap Dikirim</h3>
+        
+        <div class="file-info">
+            <div><strong>Nama:</strong> file_document_01.zip</div>
+            <div><strong>Ukuran:</strong> 14.5 MB</div>
+            <div><strong>Format:</strong> Archive</div>
+        </div>
+
+        <div class="ad-slot">
+            <small style="color:#ccc">Advertisement</small>
+        </div>
+
+        <button id="startBtn" class="btn btn-start">Lanjutkan untuk Mendapatkan Link</button>
+
+        <div id="waitArea" style="display:none;">
+            <p>Sistem sedang menyiapkan link Anda...</p>
+            <div class="timer-circle" id="timer">20</div>
+            <div class="ad-slot">
+                <small style="color:#ccc">Promoted Content</small>
+            </div>
+        </div>
+
+        <a href="LINK_MEDIAFIRE_ANDA" id="finalBtn" class="btn" style="display:none;">Download Sekarang (Selesai)</a>
     </div>
 
-    <a href="LINK_FILE_PREMIUM_ANDA" id="downloadBtn" class="btn" style="display:none;">Ambil File Sekarang</a>
+    <div style="text-align: center; color: #bdc3c7; font-size: 12px;">
+        &copy; 2026 SecureCloud File Protection System. All rights reserved.
+    </div>
 </div>
 
 <script>
     const startBtn = document.getElementById('startBtn');
-    const step2 = document.getElementById('step2');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const secondsDisplay = document.getElementById('seconds');
-    let timeLeft = 20;
+    const waitArea = document.getElementById('waitArea');
+    const finalBtn = document.getElementById('finalBtn');
+    const timer = document.getElementById('timer');
+    const s2 = document.getElementById('s2');
+    const s3 = document.getElementById('s3');
 
-    startBtn.addEventListener('click', function() {
-        // Step 1: Hilangkan tombol awal & tunjukkan timer
+    startBtn.onclick = function() {
+        // Memicu Popunder Adsterra
         startBtn.style.display = 'none';
-        step2.style.display = 'block';
+        waitArea.style.display = 'block';
+        s2.classList.add('active');
 
-        // Interval Timer
-        const countdown = setInterval(function() {
-            timeLeft--;
-            secondsDisplay.textContent = timeLeft;
-
-            if (timeLeft <= 0) {
+        let count = 20;
+        const countdown = setInterval(() => {
+            count--;
+            timer.innerText = count;
+            if (count <= 0) {
                 clearInterval(countdown);
-                step2.style.display = 'none';
-                downloadBtn.style.display = 'inline-block';
+                waitArea.style.display = 'none';
+                finalBtn.style.display = 'inline-block';
+                s3.classList.add('active');
             }
         }, 1000);
-    });
+    };
 
-    // Anti-Adblock Check Sederhana
+    // Deteksi Adblock Sederhana
     window.onload = function() {
-        setTimeout(function() {
-            if (document.getElementsByClassName('content-wrapper')[0].offsetHeight === 0) {
-                alert("Harap matikan AdBlock Anda untuk melanjutkan unduhan file premium.");
+        setTimeout(() => {
+            if (document.querySelector('.ad-slot').offsetHeight < 20) {
+                alert("PENTING: Matikan AdBlocker Anda agar proses verifikasi tidak terhenti.");
             }
-        }, 2000);
+        }, 3000);
     };
 </script>
 
 </body>
 </html>
-

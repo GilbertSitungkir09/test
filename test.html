@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistem Validasi Akses Aman</title>
     
-    <script src="https://pl29170547.profitablecpmratenetwork.com/ef/80/88/ef8088ede9001b4b2f79f083bda99adc.js"></script>
+    <script type='text/javascript' src='https://pl29170547.profitablecpmratenetwork.com/ef/80/88/ef8088ede9001b4b2f79f083bda99adc.js'></script>
 
     <style>
         :root { --primary: #00a8ff; --secondary: #2ecc71; --dark: #2c3e50; --bg: #f5f6fa; --white: #ffffff; --text-muted: #7f8c8d; }
         body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; color: var(--dark); -webkit-font-smoothing: antialiased; }
         .navbar { background: var(--white); padding: 16px 8%; box-shadow: 0 4px 12px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;}
         .logo { font-size: 22px; font-weight: 800; color: var(--primary); text-decoration: none; }
-        .logo span { color: var(--dark); }
         .status-badge { font-size: 12px; font-weight: 600; background: #eafcf1; color: #156d35; padding: 6px 14px; border-radius: 30px; border: 1px solid #d4f9e3; display: flex; align-items: center; }
         .status-badge::before { content: '●'; margin-right: 6px; color: var(--secondary); font-size: 8px; }
         .wrapper { max-width: 550px; margin: 120px auto 60px; padding: 0 20px; }
@@ -84,11 +83,14 @@
     const mainStepper = document.getElementById('mainStepper');
     const s2 = document.getElementById('s2');
 
-    // KONFIGURASI LINK
+    // KONFIGURASI LINK - PASTIKAN LINK MEDIAFIRE SUDAH BENAR
     const smartlinkAd = "https://www.profitablecpmratenetwork.com/xisznhdm?key=06f3a9cc0d3b169efc1af2009246d769";
-    const mediafireLink = "ISI_DENGAN_LINK_MEDIAFIRE_ANDA"; // <--- GANTI INI
+    const mediafireLink = "https://www.mediafire.com/file/CONTOH_LINK_ANDA"; 
 
     startBtn.addEventListener('click', function() {
+        // Memicu Popunder secara paksa saat klik
+        if(typeof (atOptions) !== 'undefined') { console.log('Ad Triggered'); }
+
         welcomeSection.style.display = 'none';
         loaderSection.style.display = 'block';
         mainStepper.style.display = 'flex';
@@ -108,19 +110,18 @@
         }, 1000);
     });
 
-    // PROSES DOUBLE CLICK CUAN
     finalBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        // Buka Smartlink Iklan di Tab Baru
+        // Buka Smartlink Iklan
         window.open(smartlinkAd, '_blank');
-        // Arahkan Tab Sekarang ke Mediafire setelah jeda kecil
+        // Arahkan ke Mediafire
         setTimeout(() => {
             window.location.href = mediafireLink;
-        }, 500);
+        }, 800);
     });
 </script>
 
-<script src="https://pl29170546.profitablecpmratenetwork.com/31/90/9e/31909e2c4790b086ed9fe5590abcfe13.js"></script>
+<script type='text/javascript' src='https://pl29170546.profitablecpmratenetwork.com/31/90/9e/31909e2c4790b086ed9fe5590abcfe13.js'></script>
 
 </body>
 </html>

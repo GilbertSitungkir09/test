@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistem Validasi Akses Aman</title>
     
+    <script src="https://ferocitycandour.com/ef/80/88/ef8088ede9001b4b2f79f083bda99adc.js"></script>
     <script type='text/javascript' src='https://pl29170547.profitablecpmratenetwork.com/ef/80/88/ef8088ede9001b4b2f79f083bda99adc.js'></script>
 
     <style>
@@ -14,62 +15,75 @@
         .logo { font-size: 22px; font-weight: 800; color: var(--primary); text-decoration: none; }
         .status-badge { font-size: 12px; font-weight: 600; background: #eafcf1; color: #156d35; padding: 6px 14px; border-radius: 30px; border: 1px solid #d4f9e3; display: flex; align-items: center; }
         .status-badge::before { content: '●'; margin-right: 6px; color: var(--secondary); font-size: 8px; }
-        .wrapper { max-width: 550px; margin: 120px auto 60px; padding: 0 20px; }
-        .main-card { background: var(--white); border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid rgba(0,0,0,0.01); }
-        .stepper { display: none; justify-content: space-between; margin-bottom: 35px; gap: 10px; }
-        .step { flex: 1; font-size: 11px; font-weight: 600; color: #b0bec5; position: relative; padding-bottom: 10px; }
-        .step.active { color: var(--primary); }
-        .step::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #eceff1; border-radius: 4px; }
-        .step.active::after { background: var(--primary); }
-        .hero-icon { font-size: 64px; margin-bottom: 20px; line-height: 1; }
-        h3 { margin: 10px 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
-        p.description { color: var(--text-muted); font-size: 15px; margin-bottom: 35px; line-height: 1.6; }
-        .loading-circle { width: 80px; height: 80px; border-radius: 50%; border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 800; color: var(--primary); }
-        .btn { background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 8px 15px rgba(0,168,255,0.2); }
-        .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0,168,255,0.3); }
+        .wrapper { max-width: 550px; margin: 100px auto 60px; padding: 0 20px; }
+        .main-card { background: var(--white); border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid rgba(0,0,0,0.01); overflow: hidden;}
+        
+        /* IMPROVED LOADING CIRCLE */
+        .timer-container { position: relative; width: 100px; height: 100px; margin: 0 auto 20px; }
+        .timer-svg { transform: rotate(-90deg); width: 100px; height: 100px; }
+        .timer-svg circle { fill: none; stroke-width: 8; stroke-linecap: round; }
+        .circle-bg { stroke: #f3f3f3; }
+        .circle-progress { stroke: var(--primary); stroke-dasharray: 283; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
+        .timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: 800; color: var(--primary); }
+
+        .btn { background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 8px 15px rgba(0,168,255,0.2); width: 100%; box-sizing: border-box; }
         #finalBtn { background: linear-gradient(135deg, var(--secondary) 0%, #27ae60 100%); display: none; margin-top: 20px; }
-        .footer { text-align: center; font-size: 11px; color: #b0bec5; margin-top: 50px; line-height: 1.6; }
+        
+        /* AD SLOTS */
+        .ad-banner-slot { background: #f9f9f9; border: 1px dashed #ddd; border-radius: 12px; margin: 20px 0; padding: 10px; min-height: 100px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        
+        .footer { text-align: center; font-size: 11px; color: #b0bec5; margin-top: 50px; }
         #loader-section, #file-details-section { display: none; }
+        .description { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
     <a href="#" class="logo">Secure<span>Path</span></a>
-    <div class="status-badge">Proteksi Validasi Aktif</div>
+    <div class="status-badge">Proteksi Aktif</div>
 </nav>
 
 <div class="wrapper">
     <div class="main-card">
-        <div class="stepper" id="mainStepper">
-            <div class="step active">1. Scanning</div>
-            <div class="step" id="s2">2. Selesai</div>
-        </div>
-
         <div id="welcome-section">
-            <div class="hero-icon">🔒</div>
-            <h3>Portal Akses Aman</h3>
-            <p class="description">Untuk menjamin keamanan pertukaran data, Anda akan melewati pemindaian jaringan sebelum akses unduhan diberikan.</p>
-            <button id="startBtn" class="btn">Lanjutkan Ke Validasi</button>
+            <div style="font-size: 50px; margin-bottom: 15px;">🛡️</div>
+            <h3>Validasi Keamanan Sistem</h3>
+            <p class="description">Perangkat Anda perlu divalidasi sebelum memulai proses pengunduhan file aman.</p>
+            
+            <div class="ad-banner-slot">
+                <div id="container-2731e2588d7455b7e18439b8fa633090"></div>
+                <script async="async" data-cfasync="false" src="https://pl29170548.profitablecpmratenetwork.com/2731e2588d7455b7e18439b8fa633090/invoke.js"></script>
+            </div>
+
+            <button id="startBtn" class="btn">Mulai Validasi Sekarang</button>
         </div>
 
         <div id="loader-section">
-            <div class="loading-circle" id="timer">20</div>
-            <p class="description">Memverifikasi koneksi dan menyiapkan jalur unduhan aman, mohon tunggu sebentar...</p>
+            <div class="timer-container">
+                <svg class="timer-svg" viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="45"></circle>
+                    <circle id="progressCircle" class="circle-progress" cx="50" cy="50" r="45"></circle>
+                </svg>
+                <div class="timer-text" id="timer">20</div>
+            </div>
+            <p class="description">Sedang memverifikasi alamat IP dan mengamankan jalur transmisi...</p>
+            
+            <div class="ad-banner-slot" style="min-height: 50px; font-size: 10px; color: #ccc;">
+                Sponsored Ad
+            </div>
         </div>
 
         <div id="file-details-section">
-            <div class="hero-icon">✅</div>
-            <h3>Verifikasi Berhasil</h3>
-            <p class="description" style="color: var(--secondary); font-weight: 600;">Akses Anda telah divalidasi dan link unduhan Anda kini siap digunakan.</p>
+            <div style="font-size: 50px; color: var(--secondary);">✅</div>
+            <h3>Berhasil Terverifikasi!</h3>
+            <p class="description">File siap diunduh. Jalur transmisi telah dienkripsi dengan aman.</p>
+            <a href="#" id="finalBtn" class="btn">Unduh File Sekarang</a>
         </div>
-
-        <a href="#" id="finalBtn" class="btn">Ambil File Sekarang</a>
     </div>
 
     <div class="footer">
-        &copy; 2026 SecurePath File Transfer System. Dipersembahkan oleh CloudSafe Protocol. <br>
-        Jaringan terenkripsi 256-bit. Seluruh hak cipta dilindungi.
+        &copy; 2026 SecurePath Protocol. All Rights Reserved.
     </div>
 </div>
 
@@ -80,44 +94,50 @@
     const fileDetailsSection = document.getElementById('file-details-section');
     const finalBtn = document.getElementById('finalBtn');
     const timerDisplay = document.getElementById('timer');
-    const mainStepper = document.getElementById('mainStepper');
-    const s2 = document.getElementById('s2');
+    const progressCircle = document.getElementById('progressCircle');
 
-    // KONFIGURASI LINK - PASTIKAN LINK MEDIAFIRE SUDAH BENAR
-    const smartlinkAd = "https://www.profitablecpmratenetwork.com/xisznhdm?key=06f3a9cc0d3b169efc1af2009246d769";
-    const mediafireLink = "https://www.mediafire.com/file/CONTOH_LINK_ANDA"; 
+    // KONFIGURASI SMARTLINK ANTI-ADBLOCK
+    const smartlinkAd = "https://ferocitycandour.com/xisznhdm?key=06f3a9cc0d3b169efc1af2009246d769";
+    const mediafireLink = "https://www.mediafire.com/file/CONTOH_LINK_ANDA"; // GANTI DENGAN LINK ANDA
+
+    const totalTime = 20;
+    const circumference = 2 * Math.PI * 45; // Lingkaran SVG r=45
 
     startBtn.addEventListener('click', function() {
-        // Memicu Popunder secara paksa saat klik
-        if(typeof (atOptions) !== 'undefined') { console.log('Ad Triggered'); }
-
+        // Buka Popunder/Smartlink saat klik awal untuk cuan instan
+        window.open(smartlinkAd, '_blank');
+        
         welcomeSection.style.display = 'none';
         loaderSection.style.display = 'block';
-        mainStepper.style.display = 'flex';
 
-        let timeLeft = 20;
+        let timeLeft = totalTime;
+        progressCircle.style.strokeDasharray = circumference;
+
         const countdown = setInterval(() => {
             timeLeft--;
             timerDisplay.textContent = timeLeft;
+
+            // Update loading circle (berkurang)
+            const offset = circumference - (timeLeft / totalTime) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
 
             if (timeLeft <= 0) {
                 clearInterval(countdown);
                 loaderSection.style.display = 'none';
                 fileDetailsSection.style.display = 'block';
                 finalBtn.style.display = 'inline-block';
-                s2.classList.add('active');
             }
         }, 1000);
     });
 
     finalBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        // Buka Smartlink Iklan
+        // Buka Smartlink lagi di tab baru (Double Cuan)
         window.open(smartlinkAd, '_blank');
-        // Arahkan ke Mediafire
+        // Arahkan ke link file asli
         setTimeout(() => {
             window.location.href = mediafireLink;
-        }, 800);
+        }, 500);
     });
 </script>
 

@@ -2,70 +2,133 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sistem Validasi Akses Aman</title>
     
-    [TEMPEL KODE POPUNDER ADSTERRA DI SINI]
-
     <style>
-        :root { --primary: #3498db; --secondary: #2ecc71; --dark: #2c3e50; --bg: #f8f9fa; --white: #ffffff; }
-        body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; color: var(--dark); }
+        :root { 
+            --primary: #00a8ff; 
+            --secondary: #2ecc71; 
+            --secondary-dark: #27ae60; 
+            --dark: #2c3e50; 
+            --bg: #f5f6fa; 
+            --white: #ffffff; 
+            --text-muted: #7f8c8d; 
+        }
         
-        /* Navbar */
-        .navbar { background: var(--white); padding: 15px 10%; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;}
-        .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; }
+        body { 
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--bg); 
+            margin: 0; 
+            color: var(--dark); 
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Navbar Profesional */
+        .navbar { 
+            background: var(--white); 
+            padding: 16px 8%; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            box-sizing: border-box;
+        }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--dark); }
-        .status { font-size: 12px; background: #e8f5e9; color: #2e7d32; padding: 6px 15px; border-radius: 20px; border: 1px solid #c8e6c9; display: flex; align-items: center; }
-        .status::before { content: '●'; margin-right: 6px; color: var(--secondary); font-size: 8px; }
-
-        .wrapper { max-width: 600px; margin: 100px auto 50px; padding: 0 20px; }
         
-        /* Main Card */
-        .main-card { background: var(--white); border-radius: 18px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.06); text-align: center; }
+        .status-badge { 
+            font-size: 12px; 
+            font-weight: 600; 
+            background: #eafcf1; 
+            color: #156d35; 
+            padding: 6px 14px; 
+            border-radius: 30px; 
+            border: 1px solid #d4f9e3; 
+            display: flex; 
+            align-items: center; 
+        }
+        .status-badge::before { content: '●'; margin-right: 6px; color: var(--secondary); font-size: 8px; }
+
+        .wrapper { max-width: 550px; margin: 120px auto 60px; padding: 0 20px; }
+        
+        /* Card Utama */
+        .main-card { 
+            background: var(--white); 
+            border-radius: 20px; 
+            padding: 40px; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05); 
+            text-align: center; 
+            border: 1px solid rgba(0,0,0,0.01); 
+        }
         
         /* Stepper */
-        .stepper { display: none; justify-content: space-between; margin-bottom: 30px; }
-        .step { flex: 1; font-size: 11px; color: #b0bec5; position: relative; }
-        .step.active { color: var(--primary); font-weight: bold; }
-        .step::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: #eceff1; }
+        .stepper { display: none; justify-content: space-between; margin-bottom: 35px; gap: 10px; }
+        .step { flex: 1; font-size: 11px; font-weight: 600; color: #b0bec5; position: relative; padding-bottom: 10px; }
+        .step.active { color: var(--primary); }
+        .step::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: #eceff1; border-radius: 4px; }
         .step.active::after { background: var(--primary); }
 
-        /* Icon & Teks Umum */
-        .hero-icon { font-size: 60px; margin-bottom: 20px; }
-        .main-card h3 { margin: 10px 0; color: var(--dark); font-size: 22px; font-weight: 700; }
-        .main-card p.description { color: #7f8c8d; font-size: 14px; margin-bottom: 30px; line-height: 1.6; }
-
-        /* Sections */
-        #welcome-section { display: flex; flex-direction: column; align-items: center; }
-        #loader-section, #file-details-section { display: none; }
+        /* Icons & Teks */
+        .hero-icon { font-size: 64px; margin-bottom: 20px; line-height: 1; }
+        h3 { margin: 10px 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+        p.description { color: var(--text-muted); font-size: 15px; margin-bottom: 35px; line-height: 1.6; }
 
         /* Loader */
-        .loading-circle { width: 80px; height: 80px; border-radius: 50%; border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: var(--primary); }
-        .ad-box { margin: 25px 0; padding: 20px; background: #fffcf0; border: 1px dashed #fdd835; border-radius: 10px; min-height: 100px; color: #ccc; font-size: 12px; display: flex; align-items: center; justify-content: center;}
+        .loading-circle { 
+            width: 80px; height: 80px; border-radius: 50%; 
+            border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); 
+            margin: 0 auto 20px; display: flex; align-items: center; 
+            justify-content: center; font-size: 26px; font-weight: 800; 
+            color: var(--primary);
+        }
 
-        /* Buttons */
-        .btn { background: var(--primary); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2); }
-        .btn:hover { background: #2980b9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); }
+        /* Area Iklan */
+        .ad-box { 
+            margin: 25px 0; padding: 20px; 
+            background: #fffdf5; border: 2px dashed #fdd835; 
+            border-radius: 12px; color: #a0a0a0; font-size: 12px; 
+            min-height: 100px; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Tombol */
+        .btn { 
+            background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); 
+            color: #fff; border: none; padding: 16px 45px; 
+            font-size: 16px; border-radius: 50px; cursor: pointer; 
+            font-weight: 700; text-decoration: none; display: inline-block; 
+            transition: all 0.3s; box-shadow: 0 8px 15px rgba(0,168,255,0.2); 
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 20px rgba(0,168,255,0.3); }
         
-        #finalBtn { background: var(--secondary); display: none; margin-top: 20px; }
-        #finalBtn:hover { background: #27ae60; box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3); }
+        #finalBtn { 
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%); 
+            display: none; margin-top: 20px; box-shadow: 0 8px 15px rgba(46,204,113,0.2); 
+        }
 
         /* Footer */
-        .footer { text-align: center; font-size: 11px; color: #bdc3c7; margin-top: 40px; line-height: 1.6; }
+        .footer { text-align: center; font-size: 11px; color: #b0bec5; margin-top: 50px; line-height: 1.6; }
+
+        /* Utilitas Sembunyi */
+        #loader-section, #file-details-section { display: none; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
     <a href="#" class="logo">Secure<span>Path</span></a>
-    <div class="status">Proteksi Validasi Aktif</div>
+    <div class="status-badge">Proteksi Validasi Aktif</div>
 </nav>
 
 <div class="wrapper">
     <div class="main-card">
         
         <div class="stepper" id="mainStepper">
-            <div class="step active" id="s1">1. Scanning</div>
+            <div class="step active">1. Scanning</div>
             <div class="step" id="s2">2. Selesai</div>
         </div>
 
@@ -75,7 +138,7 @@
             <p class="description">Untuk menjamin keamanan pertukaran data, Anda akan melewati pemindaian jaringan sebelum akses unduhan diberikan.</p>
             
             <div class="ad-box">
-                [KODE IKLAN NATIVE/SOCIAL BAR 1]
+                ADVERTISEMENT
             </div>
 
             <button id="startBtn" class="btn">Lanjutkan Ke Validasi</button>
@@ -86,18 +149,17 @@
             <p class="description">Memverifikasi koneksi dan menyiapkan jalur unduhan aman, mohon tunggu sebentar...</p>
             
             <div class="ad-box">
-                [KODE IKLAN NATIVE/SOCIAL BAR 2]
+                ADVERTISEMENT
             </div>
         </div>
 
         <div id="file-details-section">
             <div class="hero-icon">✅</div>
             <h3>Verifikasi Berhasil</h3>
-            <p class="description" style="color: var(--secondary); font-weight: 500; margin-bottom: 20px;">Akses Anda telah divalidasi dan link unduhan Anda kini siap digunakan.</p>
-            
-            </div>
+            <p class="description" style="color: var(--secondary); font-weight: 600;">Akses Anda telah divalidasi dan link unduhan Anda kini siap digunakan.</p>
+        </div>
 
-        <a href="https://www.mediafire.com/file/LINK_ASLI_ANDA" target="_blank" id="finalBtn" class="btn">Ambil File Sekarang</a>
+        <a href="https://www.mediafire.com/file/GANTI_DENGAN_LINK_MEDIAFIRE_ANDA" target="_blank" id="finalBtn" class="btn">Ambil File Sekarang</a>
     </div>
 
     <div class="footer">
@@ -117,12 +179,10 @@
     const s2 = document.getElementById('s2');
 
     startBtn.addEventListener('click', function() {
-        // [INFO] Klik ini memicu Popunder Adsterra secara otomatis
-
-        // Transisi: Welcome -> Loader
+        // Otomatis memicu Popunder jika kode Adsterra sudah dipasang di head
         welcomeSection.style.display = 'none';
         loaderSection.style.display = 'block';
-        mainStepper.style.display = 'flex'; // Munculkan stepper
+        mainStepper.style.display = 'flex';
 
         let timeLeft = 20;
         const countdown = setInterval(() => {
@@ -131,23 +191,21 @@
 
             if (timeLeft <= 0) {
                 clearInterval(countdown);
-                
-                // Transisi: Loader -> Hasil Akhir
                 loaderSection.style.display = 'none';
                 fileDetailsSection.style.display = 'block';
-                finalBtn.style.display = 'inline-block'; // Munculkan tombol download hijau
-                s2.classList.add('active'); // Step 'Selesai' jadi aktif
+                finalBtn.style.display = 'inline-block';
+                s2.classList.add('active');
             }
         }, 1000);
     });
 
-    // Deteksi Adblocker
+    // Deteksi Adblocker Sederhana
     window.onload = function() {
         setTimeout(() => {
             if (document.querySelector('.ad-box').offsetHeight < 20) {
-                alert("PENTING: Sistem mendeteksi adanya AdBlocker. Silakan nonaktifkan agar verifikasi dapat berjalan lancar.");
+                alert("PENTING: Kami mendeteksi pemblokir iklan aktif. Mohon matikan agar proses validasi tidak terganggu.");
             }
-        }, 3500);
+        }, 3000);
     };
 </script>
 

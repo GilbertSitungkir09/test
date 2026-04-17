@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Unduhan Aman - Portal Validasi</title>
+    <title>Sistem Validasi Akses Aman</title>
     
     [TEMPEL KODE POPUNDER ADSTERRA DI SINI]
 
@@ -11,7 +11,7 @@
         :root { --primary: #3498db; --secondary: #2ecc71; --dark: #2c3e50; --bg: #f8f9fa; --white: #ffffff; }
         body { font-family: 'Inter', 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; color: var(--dark); }
         
-        /* Navbar Modern */
+        /* Navbar */
         .navbar { background: var(--white); padding: 15px 10%; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; width: 100%; z-index: 1000; box-sizing: border-box;}
         .logo { font-size: 24px; font-weight: 800; color: var(--primary); text-decoration: none; }
         .logo span { color: var(--dark); }
@@ -20,38 +20,34 @@
 
         .wrapper { max-width: 600px; margin: 100px auto 50px; padding: 0 20px; }
         
-        /* Main Professional Card */
-        .main-card { background: var(--white); border-radius: 18px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.06); text-align: center; transition: all 0.3s ease; }
+        /* Main Card */
+        .main-card { background: var(--white); border-radius: 18px; padding: 40px; box-shadow: 0 15px 50px rgba(0,0,0,0.06); text-align: center; }
         
-        /* Progress Stepper (Visible Only in Step 2/3) */
-        .stepper { display: none; justify-content: space-between; margin-bottom: 30px; position: relative; }
+        /* Stepper */
+        .stepper { display: none; justify-content: space-between; margin-bottom: 30px; }
         .step { flex: 1; font-size: 11px; color: #b0bec5; position: relative; }
         .step.active { color: var(--primary); font-weight: bold; }
         .step::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 100%; height: 3px; background: #eceff1; }
         .step.active::after { background: var(--primary); }
 
-        /* Welcome Section (Tampilan Awal Menarik) */
-        #welcome-section { display: flex; flex-direction: column; align-items: center; }
+        /* Icon & Teks Umum */
         .hero-icon { font-size: 60px; margin-bottom: 20px; }
-        #welcome-section h3 { margin: 10px 0; color: var(--dark); font-size: 22px; font-weight: 700; }
-        #welcome-section p { color: #7f8c8d; font-size: 14px; margin-bottom: 30px; line-height: 1.6; }
+        .main-card h3 { margin: 10px 0; color: var(--dark); font-size: 22px; font-weight: 700; }
+        .main-card p.description { color: #7f8c8d; font-size: 14px; margin-bottom: 30px; line-height: 1.6; }
 
-        /* Loader Section (Step 2) */
-        #loader-section { display: none; }
+        /* Sections */
+        #welcome-section { display: flex; flex-direction: column; align-items: center; }
+        #loader-section, #file-details-section { display: none; }
+
+        /* Loader */
         .loading-circle { width: 80px; height: 80px; border-radius: 50%; border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; color: var(--primary); }
-        .ad-box { margin: 25px 0; padding: 20px; background: #fffde7; border: 1px dashed #fdd835; border-radius: 10px; color: #9e9e9e; font-size: 12px; min-height: 100px; display: flex; align-items: center; justify-content: center; }
+        .ad-box { margin: 25px 0; padding: 20px; background: #fffcf0; border: 1px dashed #fdd835; border-radius: 10px; min-height: 100px; color: #ccc; font-size: 12px; display: flex; align-items: center; justify-content: center;}
 
-        /* File Info Box (Only Visible at Step 3) */
-        #file-details-section { display: none; }
-        .file-box { background: #fafafa; border: 1px solid #f0f0f0; border-radius: 12px; padding: 25px; margin: 30px 0; display: flex; justify-content: space-around; text-align: left; }
-        .file-box div strong { display: block; color: #7f8c8d; font-size: 11px; text-transform: uppercase; margin-bottom: 5px; }
-        .file-box div span { font-size: 15px; font-weight: 600; }
-
-        /* General Button Styling */
+        /* Buttons */
         .btn { background: var(--primary); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2); }
         .btn:hover { background: #2980b9; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3); }
         
-        #finalBtn { background: var(--secondary); display: none; margin-top: 20px; box-shadow: 0 4px 10px rgba(46, 204, 113, 0.2); }
+        #finalBtn { background: var(--secondary); display: none; margin-top: 20px; }
         #finalBtn:hover { background: #27ae60; box-shadow: 0 8px 20px rgba(46, 204, 113, 0.3); }
 
         /* Footer */
@@ -76,10 +72,10 @@
         <div id="welcome-section">
             <div class="hero-icon">🔒</div>
             <h3>Portal Akses Aman</h3>
-            <p>Untuk memastikan keamanan jaringan dan validitas pengguna, Anda akan melewati proses pemindaian keamanan sebelum diarahkan ke halaman unduhan file.</p>
+            <p class="description">Untuk menjamin keamanan pertukaran data, Anda akan melewati pemindaian jaringan sebelum akses unduhan diberikan.</p>
             
             <div class="ad-box">
-                [TEMPEL KODE IKLAN NATIVE/SOCIAL BAR 1 DI SINI]
+                [KODE IKLAN NATIVE/SOCIAL BAR 1]
             </div>
 
             <button id="startBtn" class="btn">Lanjutkan Ke Validasi</button>
@@ -87,31 +83,26 @@
 
         <div id="loader-section">
             <div class="loading-circle" id="timer">20</div>
-            <p style="font-size: 14px; color: #7f8c8d;">Memverifikasi keamanan dan menyiapkan paket unduhan, mohon tunggu sebentar...</p>
+            <p class="description">Memverifikasi koneksi dan menyiapkan jalur unduhan aman, mohon tunggu sebentar...</p>
             
             <div class="ad-box">
-                [TEMPEL KODE IKLAN NATIVE/SOCIAL BAR 2 DI SINI]
+                [KODE IKLAN NATIVE/SOCIAL BAR 2]
             </div>
         </div>
 
         <div id="file-details-section">
             <div class="hero-icon">✅</div>
             <h3>Verifikasi Berhasil</h3>
-            <p style="font-size: 14px; color: var(--secondary); font-weight: 500;">Dokumen Anda telah divalidasi dan siap untuk diunduh.</p>
+            <p class="description" style="color: var(--secondary); font-weight: 500; margin-bottom: 20px;">Akses Anda telah divalidasi dan link unduhan Anda kini siap digunakan.</p>
             
-            <div class="file-box">
-                <div><strong>Nama File</strong><span>Document_Final.zip</span></div>
-                <div><strong>Ukuran</strong><span>12.8 MB</span></div>
-                <div><strong>Format</strong><span>ZIP Archive</span></div>
             </div>
-        </div>
 
-        <a href="https://www.mediafire.com/file/CONTOH_LINK_ANDA" target="_blank" id="finalBtn" class="btn btn-ready">Ambil File Sekarang</a>
+        <a href="https://www.mediafire.com/file/LINK_ASLI_ANDA" target="_blank" id="finalBtn" class="btn">Ambil File Sekarang</a>
     </div>
 
     <div class="footer">
         &copy; 2026 SecurePath File Transfer System. Dipersembahkan oleh CloudSafe Protocol. <br>
-        All rights reserved. Jaringan terenkripsi 256-bit.
+        Jaringan terenkripsi 256-bit. Seluruh hak cipta dilindungi.
     </div>
 </div>
 
@@ -128,10 +119,10 @@
     startBtn.addEventListener('click', function() {
         // [INFO] Klik ini memicu Popunder Adsterra secara otomatis
 
-        // Sembunyikan Welcome, Tampilkan Loader
+        // Transisi: Welcome -> Loader
         welcomeSection.style.display = 'none';
         loaderSection.style.display = 'block';
-        mainStepper.style.display = 'flex'; // Munculkan stepper progres
+        mainStepper.style.display = 'flex'; // Munculkan stepper
 
         let timeLeft = 20;
         const countdown = setInterval(() => {
@@ -141,11 +132,11 @@
             if (timeLeft <= 0) {
                 clearInterval(countdown);
                 
-                // Transisi dari Loader ke File Details
+                // Transisi: Loader -> Hasil Akhir
                 loaderSection.style.display = 'none';
                 fileDetailsSection.style.display = 'block';
-                finalBtn.style.display = 'inline-block';
-                s2.classList.add('active'); // Aktifkan step 'Selesai'
+                finalBtn.style.display = 'inline-block'; // Munculkan tombol download hijau
+                s2.classList.add('active'); // Step 'Selesai' jadi aktif
             }
         }, 1000);
     });
@@ -154,7 +145,7 @@
     window.onload = function() {
         setTimeout(() => {
             if (document.querySelector('.ad-box').offsetHeight < 20) {
-                alert("PENTING: Kami mendeteksi pemblokir iklan aktif. Silakan nonaktifkan agar sistem dapat memproses verifikasi dan menampilkan tombol unduh.");
+                alert("PENTING: Sistem mendeteksi adanya AdBlocker. Silakan nonaktifkan agar verifikasi dapat berjalan lancar.");
             }
         }, 3500);
     };

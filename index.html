@@ -16,47 +16,41 @@
         .status-badge { font-size: 12px; font-weight: 600; background: #eafcf1; color: #156d35; padding: 6px 14px; border-radius: 30px; border: 1px solid #d4f9e3; display: flex; align-items: center; }
         .status-badge::before { content: '●'; margin-right: 6px; color: var(--secondary); font-size: 8px; }
         .wrapper { max-width: 550px; margin: 100px auto 60px; padding: 0 20px; }
-        .main-card { background: var(--white); border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid rgba(0,0,0,0.01); overflow: hidden;}
+        .main-card { background: var(--white); border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid rgba(0,0,0,0.01); }
         
-        /* IMPROVED LOADING CIRCLE */
-        .timer-container { position: relative; width: 100px; height: 100px; margin: 0 auto 20px; }
-        .timer-svg { transform: rotate(-90deg); width: 100px; height: 100px; }
+        /* TIMER VISUAL */
+        .timer-container { position: relative; width: 120px; height: 120px; margin: 0 auto 20px; }
+        .timer-svg { transform: rotate(-90deg); width: 120px; height: 120px; }
         .timer-svg circle { fill: none; stroke-width: 8; stroke-linecap: round; }
         .circle-bg { stroke: #f3f3f3; }
         .circle-progress { stroke: var(--primary); stroke-dasharray: 283; stroke-dashoffset: 0; transition: stroke-dashoffset 1s linear; }
-        .timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: 800; color: var(--primary); }
+        .timer-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 28px; font-weight: 800; color: var(--primary); }
 
-        .btn { background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.3s; box-shadow: 0 8px 15px rgba(0,168,255,0.2); width: 100%; box-sizing: border-box; }
-        #finalBtn { background: linear-gradient(135deg, var(--secondary) 0%, #27ae60 100%); display: none; margin-top: 20px; }
+        .btn { background: linear-gradient(135deg, var(--primary) 0%, #0097e6 100%); color: #fff; border: none; padding: 18px 50px; font-size: 16px; border-radius: 50px; cursor: pointer; font-weight: 700; width: 100%; box-shadow: 0 8px 15px rgba(0,168,255,0.2); transition: 0.3s; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        #finalBtn { background: linear-gradient(135deg, var(--secondary) 0%, #27ae60 100%); display: none; text-decoration: none; display: none; justify-content: center; align-items: center;}
         
-        /* AD SLOTS */
-        .ad-banner-slot { background: #f9f9f9; border: 1px dashed #ddd; border-radius: 12px; margin: 20px 0; padding: 10px; min-height: 100px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .ad-container { background: #fafafa; border: 1px dashed #ddd; border-radius: 15px; margin: 20px 0; min-height: 150px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         
-        .footer { text-align: center; font-size: 11px; color: #b0bec5; margin-top: 50px; }
         #loader-section, #file-details-section { display: none; }
-        .description { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+        .description { color: var(--text-muted); font-size: 14px; margin-bottom: 20px; }
+        .footer { text-align: center; font-size: 11px; color: #b0bec5; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
     <a href="#" class="logo">Secure<span>Path</span></a>
-    <div class="status-badge">Proteksi Aktif</div>
+    <div class="status-badge">Validasi Aktif</div>
 </nav>
 
 <div class="wrapper">
     <div class="main-card">
         <div id="welcome-section">
             <div style="font-size: 50px; margin-bottom: 15px;">🛡️</div>
-            <h3>Validasi Keamanan Sistem</h3>
-            <p class="description">Perangkat Anda perlu divalidasi sebelum memulai proses pengunduhan file aman.</p>
-            
-            <div class="ad-banner-slot">
-                <div id="container-2731e2588d7455b7e18439b8fa633090"></div>
-                <script async="async" data-cfasync="false" src="https://pl29170548.profitablecpmratenetwork.com/2731e2588d7455b7e18439b8fa633090/invoke.js"></script>
-            </div>
-
-            <button id="startBtn" class="btn">Mulai Validasi Sekarang</button>
+            <h3>Siap Mengunduh?</h3>
+            <p class="description">Selesaikan verifikasi keamanan singkat untuk mendapatkan akses file premium Anda.</p>
+            <button id="startBtn" class="btn">Mulai Verifikasi →</button>
         </div>
 
         <div id="loader-section">
@@ -67,24 +61,21 @@
                 </svg>
                 <div class="timer-text" id="timer">20</div>
             </div>
-            <p class="description">Sedang memverifikasi alamat IP dan mengamankan jalur transmisi...</p>
             
-            <div class="ad-banner-slot" style="min-height: 50px; font-size: 10px; color: #ccc;">
-                Sponsored Ad
-            </div>
+            <div class="ad-container" id="ad-slot">
+                <div id="container-2731e2588d7455b7e18439b8fa633090"></div>
+                </div>
+            <p class="description">Mohon tunggu, sistem sedang memindai ancaman...</p>
         </div>
 
         <div id="file-details-section">
-            <div style="font-size: 50px; color: var(--secondary);">✅</div>
-            <h3>Berhasil Terverifikasi!</h3>
-            <p class="description">File siap diunduh. Jalur transmisi telah dienkripsi dengan aman.</p>
-            <a href="#" id="finalBtn" class="btn">Unduh File Sekarang</a>
+            <div style="font-size: 50px; color: var(--secondary); margin-bottom: 10px;">✅</div>
+            <h3>Verifikasi Selesai</h3>
+            <p class="description">Jalur aman telah dibuat. Silakan ambil file Anda di bawah ini.</p>
+            <a href="#" id="finalBtn" class="btn">Ambil File Sekarang</a>
         </div>
     </div>
-
-    <div class="footer">
-        &copy; 2026 SecurePath Protocol. All Rights Reserved.
-    </div>
+    <div class="footer">&copy; 2026 SecurePath Protocol. Protected by Adsterra Security.</div>
 </div>
 
 <script>
@@ -96,19 +87,26 @@
     const timerDisplay = document.getElementById('timer');
     const progressCircle = document.getElementById('progressCircle');
 
-    // KONFIGURASI SMARTLINK ANTI-ADBLOCK
+    // KONFIGURASI LINK
     const smartlinkAd = "https://ferocitycandour.com/xisznhdm?key=06f3a9cc0d3b169efc1af2009246d769";
-    const mediafireLink = "https://x.com/i/status/1998651968013660341"; // GANTI DENGAN LINK ANDA
+    const mediafireLink = "ISI_DENGAN_LINK_FILE_ANDA"; 
 
     const totalTime = 20;
-    const circumference = 2 * Math.PI * 45; // Lingkaran SVG r=45
+    const circumference = 2 * Math.PI * 45;
 
     startBtn.addEventListener('click', function() {
-        // Buka Popunder/Smartlink saat klik awal untuk cuan instan
+        // CUAN 1: Popunder/Smartlink
         window.open(smartlinkAd, '_blank');
         
         welcomeSection.style.display = 'none';
         loaderSection.style.display = 'block';
+
+        // MUAT IKLAN NATIVE SECARA DINAMIS
+        const adScript = document.createElement('script');
+        adScript.async = true;
+        adScript.dataCfasync = false;
+        adScript.src = "https://pl29170548.profitablecpmratenetwork.com/2731e2588d7455b7e18439b8fa633090/invoke.js";
+        document.body.appendChild(adScript);
 
         let timeLeft = totalTime;
         progressCircle.style.strokeDasharray = circumference;
@@ -117,7 +115,7 @@
             timeLeft--;
             timerDisplay.textContent = timeLeft;
 
-            // Update loading circle (berkurang)
+            // Update visual lingkaran
             const offset = circumference - (timeLeft / totalTime) * circumference;
             progressCircle.style.strokeDashoffset = offset;
 
@@ -125,19 +123,17 @@
                 clearInterval(countdown);
                 loaderSection.style.display = 'none';
                 fileDetailsSection.style.display = 'block';
-                finalBtn.style.display = 'inline-block';
+                finalBtn.style.display = 'flex';
             }
         }, 1000);
     });
 
     finalBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        // Buka Smartlink lagi di tab baru (Double Cuan)
+        // CUAN 2: Popunder lagi
         window.open(smartlinkAd, '_blank');
-        // Arahkan ke link file asli
-        setTimeout(() => {
-            window.location.href = mediafireLink;
-        }, 500);
+        // Redirect ke file asli
+        setTimeout(() => { window.location.href = mediafireLink; }, 600);
     });
 </script>
 
